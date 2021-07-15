@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
 *,
 *::before,
 *::after {
@@ -26,15 +28,6 @@
     0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
 }
 
-@media (min-width: 800px) {
-  :root {
-    --fs-h1: 4.5rem;
-    --fs-h2: 3.75rem;
-    --fs-h3: 1.5rem;
-    --fs-body: 1.125rem;
-  }
-}
-
 /* General Styles */
 html {
   scroll-behavior: smooth;
@@ -47,6 +40,7 @@ body {
   font-family: var(--ff-primary);
   font-size: var(--fs-body);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* fazer section depois */
@@ -142,7 +136,7 @@ header {
 }
 
 .nav {
-  width: 500px;
+  width: 650px;
   margin-right: 2em;
 }
 
@@ -233,34 +227,6 @@ header {
   color: #16e054;
 }
 
-@media (min-width: 600px) {
-  .intro {
-    display: grid;
-    column-gap: 1em;
-    grid-template-areas:
-      "img title"
-      "img subtitle";
-    grid-template-columns: min-content max-content;
-    width: min-content;
-    margin: 0 auto;
-  }
-  .intro__img {
-    grid-area: img;
-    min-width: 350px;
-    position: relative;
-    z-index: 2;
-  }
-  .section__subtitle--intro {
-    align-self: start;
-    grid-column: -1 / 1;
-    grid-row: 2;
-    text-align: right;
-    position: relative;
-    left: -1.5em;
-    width: calc(100%+1.5em);
-  }
-}
-
 /* ------- My services section ------------- */
 .my-services {
   background-color: var(--clr-dark);
@@ -296,24 +262,6 @@ header {
   margin: 0 auto;
 }
 
-@media (min-width: 800px) {
-  .my-services {
-    width: auto;
-  }
-
-  .services {
-    display: flex;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator */
-  .service + .service {
-    margin-left: 2em;
-  }
-}
-
 /* ------- Aboute-me section ------------- */
 .about-me {
   max-width: 1000px;
@@ -323,35 +271,6 @@ header {
 .about-me__img {
   box-shadow: var(--bs);
   background: #fff1ca;
-}
-
-@media (min-width: 600px) {
-  .about-me {
-    display: grid;
-    grid-template-columns: 1fr 200px;
-    grid-template-areas:
-      "title     img"
-      "subtitle  img"
-      "text      img";
-    column-gap: 2em;
-  }
-  .section__title--about {
-    grid-area: title;
-  }
-  .section__subtitle--about {
-    grid-column: 1/-1;
-    grid-row: 2;
-    position: relative;
-    left: -1em;
-    width: calc(100% + 2em);
-    padding-left: 1em;
-    padding-right: calc(200px + 4em);
-  }
-  .about-me__img {
-    grid-area: img;
-    position: relative;
-    z-index: 2;
-  }
 }
 
 /* ------- My-work section ------------- */
@@ -416,6 +335,96 @@ header {
   opacity: 1;
 }
 
+/* ---------Social Media Links---------- */
+.social-media {
+  background: #dedede;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  transition: 0.5s;
+}
+
+.social-class {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-class-item {
+  display: flex;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+}
+
+.social-class-item li {
+  list-style: none;
+}
+
+.social-class-item li::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 120px));
+  font-size: 10vw;
+  pointer-events: none;
+  font-weight: 700;
+  transition: 0.5s;
+  opacity: 0;
+  color: black;
+}
+
+.social-class li:hover::before {
+  opacity: 0.1;
+  transform: translate(-50%, calc(-50% + 150px));
+}
+
+.social-class-item li a {
+  position: relative;
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  border-radius: 10px;
+  text-decoration: none;
+  margin: 20px;
+  font-size: 4em;
+  transform-style: preserve-3d;
+  perspective: 500px;
+  box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
+  transition: background 0.25s;
+}
+
+.social-class-item li a:hover.facebook {
+  background: #1877f2;
+}
+
+.social-class-item li a:hover.linkedin {
+  background: #9864d2;
+}
+
+.social-class-item li a:hover.github {
+  background: silver;
+}
+
+.social-class-item li a .fa {
+  transition: 0.25s;
+  pointer-events: none;
+}
+
+.social-class-item li a:hover .fa {
+  color: #fff;
+  transform: scale(1.75) translateZ(50px);
+}
+
 /* -------Footer section ------------- */
 .footer {
   background: #111;
@@ -456,6 +465,91 @@ header {
   padding: 0.5em;
 }
 
+/* Screen Adjustment */
+
+/* min-width: 600px */
+@media (min-width: 600px) {
+  .intro {
+    display: grid;
+    column-gap: 1em;
+    grid-template-areas:
+      "img title"
+      "img subtitle";
+    grid-template-columns: min-content max-content;
+    width: min-content;
+    margin: 0 auto;
+  }
+  .intro__img {
+    grid-area: img;
+    min-width: 350px;
+    position: relative;
+    z-index: 2;
+  }
+  .section__subtitle--intro {
+    align-self: start;
+    grid-column: -1 / 1;
+    grid-row: 2;
+    text-align: right;
+    position: relative;
+    left: -1.5em;
+    width: calc(100%+1.5em);
+  }
+
+  /* About Me */
+  .about-me {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    grid-template-areas:
+      "title     img"
+      "subtitle  img"
+      "text      img";
+    column-gap: 2em;
+  }
+  .section__title--about {
+    grid-area: title;
+  }
+  .section__subtitle--about {
+    grid-column: 1/-1;
+    grid-row: 2;
+    position: relative;
+    left: -1em;
+    width: calc(100% + 2em);
+    padding-left: 1em;
+    padding-right: calc(200px + 4em);
+  }
+  .about-me__img {
+    grid-area: img;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+/* min-width: 800px */
+@media (min-width: 800px) {
+  :root {
+    --fs-h1: 4.5rem;
+    --fs-h2: 3.75rem;
+    --fs-h3: 1.5rem;
+    --fs-body: 1.125rem;
+  }
+
+  .my-services {
+    width: auto;
+  }
+
+  .services {
+    display: flex;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator */
+  .service + .service {
+    margin-left: 2em;
+  }
+}
+
 /* Modify screen size with max-width 500px */
 @media (max-width: 500px) {
   .nav {
@@ -476,6 +570,7 @@ header {
     list-style: none;
     display: flex;
     height: 100%;
+    width: 100vw;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
@@ -505,5 +600,14 @@ header {
   .hamburger {
     display: block;
     position: relative;
+  }
+}
+
+/* max-width: 700px */
+@media (max-width: 700px) {
+  .social-class-item {
+    display: flex;
+    position: relative;
+    flex-direction: column;
   }
 }

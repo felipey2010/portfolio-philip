@@ -25,6 +25,15 @@
       href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;900&family=Source+Sans+Pro:wght@300;400;900&display=swap"
       rel="stylesheet"
     />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <!-- main css -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -50,6 +59,9 @@
           </li>
           <li class="nav__item">
             <a href="#work" class="nav__link">My Work</a>
+          </li>
+          <li class="nav__item">
+            <a href="#social-media" class="nav__link">Social Media</a>
           </li>
         </ul>
       </nav>
@@ -239,6 +251,44 @@
       </div>
     </section>
 
+    <!-- My Social Media Links -->
+    <section class="social-media" id="social-media">
+      <h2 class="section__title section__title--social-media">
+        My Social Media Links
+      </h2>
+      <div class="social-class">
+        <ul class="social-class-item">
+          <!-- Facebook -->
+          <li data-text="Facebook" data-color="#1877f2">
+            <a
+              href="https://web.facebook.com/mahamaphilip"
+              class="facebook"
+              target="_blank"
+              ><i class="fa fa-facebook" aria-hidden="true"></i
+            ></a>
+          </li>
+          <!-- LinkedIn -->
+          <li data-text="LinkedIn" data-color="#9864d2">
+            <a
+              href="https://www.linkedin.com/in/philip-mahama-akpanyi/"
+              class="linkedin"
+              target="_blank"
+              ><i class="fa fa-linkedin" aria-hidden="true"></i
+            ></a>
+          </li>
+          <!-- Github -->
+          <li data-text="Github" data-color="#c0c0c0">
+            <a
+              href="https://github.com/felipey2010"
+              class="github"
+              target="_blank"
+              ><i class="fa fa-github" aria-hidden="true"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- footer  -->
     <footer class="footer">
       <a href="mailto:pakpanyi@gmail.com" class="footer-link"
@@ -279,7 +329,31 @@
         </li>
       </ul>
     </footer>
-
+    <script src="js/vanilla-tilt.min.js"></script>
     <script src="js/index.js"></script>
+    <script>
+      // Library for the tilt movement
+      VanillaTilt.init(document.querySelectorAll(".social-class-list li a"), {
+        max: 30,
+        speed: 400,
+        glare: true,
+        "max-glare": 1,
+      });
+
+      let list = document.querySelectorAll(".social-class-list li");
+      let bg = document.querySelector(".social-media");
+
+      list.forEach(element => {
+        element.addEventListener("mouseenter", function (event) {
+          let color = event.target.getAttribute("data-color");
+          bg.style.backgroundColor = color;
+          console.log("Function triggered");
+        });
+
+        element.addEventListener("mouseleave", function (event) {
+          bg.style.backgroundColor = "#dedede";
+        });
+      });
+    </script>
   </body>
 </html>
